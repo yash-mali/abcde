@@ -1,0 +1,133 @@
+Main.xml---------------------------------------------------------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Internel Storage LAB 9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58" />
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="TYPE YOUR TEXT HERE TO STORE"
+        android:layout_marginTop="84dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:text="SAVE"
+        android:onClick="Save"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/textView" />
+    <Button
+        android:id="@+id/btnload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="load"
+        android:onClick="Load"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="@+id/btnSave"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnSave" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+Main.java------------------------------------------------------------------------------------------------
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public class MainActivity extends AppCompatActivity {
+    private static final String FILE_NAME = "example.txt";
+    EditText mEditText;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mEditText = findViewById(R.id.edit_text);
+    }
+    public void Save(View view) throws Exception {
+        String text = mEditText.getText().toString();
+        FileOutputStream fos = null;
+        try {
+            fos=openFileOutput(FILE_NAME,MODE_PRIVATE);
+            fos.write(text.getBytes());
+            mEditText.getText().clear();
+            Toast.makeText(this,"Saved to "+getFilesDir()+"/"+FILE_NAME,Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+       finally{
+           if(fos != null){
+               try {
+                   fos.close();
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
+           }
+       }
+    }
+
+    public void Load(View view) throws Exception {
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+            while((text=br.readLine())!=null){
+                sb.append(text).append("\n");
+            }
+            mEditText.setText(sb.toString());
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+        finally {
+            if(fis!=null){
+                try {
+
+                   fis.close();
+
+               } catch (IOException e) {
+
+                   throw new RuntimeException(e);
+
+               }
+
+           }
+
+       }
+    }
+}

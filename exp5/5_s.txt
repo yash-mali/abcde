@@ -1,0 +1,339 @@
+LAB5:
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <TextView
+ android:id="@+id/textView"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="TextView"
+ android:textSize="20sp"
+ android:textStyle="bold"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.498"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent"
+ app:layout_constraintVertical_bias="0.332" />
+ <Button
+ android:id="@+id/button"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Button"
+ android:onClick="Showpopup"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toBottomOf="@+id/textView" />
+ <TextView
+ android:id="@+id/textView2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="40dp"
+ android:text="Username"
+ app:layout_constraintEnd_toEndOf="@+id/textView"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/textView"
+ app:layout_constraintTop_toBottomOf="@+id/textView" />
+ <TextView
+ android:id="@+id/textView3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="36dp"
+ android:text="Password"
+ app:layout_constraintEnd_toEndOf="@+id/textView2"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/textView2"
+ app:layout_constraintTop_toBottomOf="@+id/textView2" />
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="40dp"
+ android:text="Open Dialog"
+ app:layout_constraintEnd_toEndOf="@+id/button"
+ app:layout_constraintHorizontal_bias="0.487"
+ app:layout_constraintStart_toStartOf="@+id/button"
+ app:layout_constraintTop_toBottomOf="@+id/button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+Layout_dialog.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent">
+ <EditText
+ android:id="@+id/editTextTextPassword"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="52dp"
+ android:ems="10"
+ android:hint="Password"
+ android:inputType="textPassword"
+ app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+ app:layout_constraintHorizontal_bias="0.0"
+ 
+app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+ 
+app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+ <EditText
+ android:id="@+id/editTextTextPersonName"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="64dp"
+ android:ems="10"
+ android:inputType="textPersonName"
+ android:hint="First Name"
+ android:text=""
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.497"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+Context_menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto">
+ <item android:id="@+id/Ite1"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item1"
+ app:showAsAction="ifRoom"/>
+ <item android:id="@+id/Ite2"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item2"
+ app:showAsAction="never"/>
+ <item android:id="@+id/Ite3"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item3"
+ app:showAsAction="never">
+ <menu>
+ <item android:id="@+id/Ite4"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item4"
+ app:showAsAction="never"/>
+ </menu>
+ </item>
+</menu>
+example_menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/first"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item1"
+ app:showAsAction="ifRoom"/>
+ <item android:id="@+id/second"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item2"
+ app:showAsAction="never"/>
+ <item android:id="@+id/third"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item3"
+ app:showAsAction="never">
+ <menu>
+ <item android:id="@+id/fourth"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item4"
+ app:showAsAction="never"/>
+ </menu>
+ </item>
+</menu>
+Popup_menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto">
+ <item android:id="@+id/Item1"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item1"
+ app:showAsAction="ifRoom"/>
+ <item android:id="@+id/Item2"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item2"
+ app:showAsAction="never"/>
+ <item android:id="@+id/Item3"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item3"
+ app:showAsAction="never">
+ <menu>
+ <item android:id="@+id/Item4"
+ android:icon="@drawable/baseline_home_24"
+ android:title="Item4"
+ app:showAsAction="never"/>
+ </menu>
+ </item>
+</menu>
+Mainactivity.java
+package com.example.lab5;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity implements 
+Exampledialog.Exampledialoglistner {
+ TextView username1,password1;
+ @Override
+ public void applyTexts(String username, String password) {
+ username1.setText(username);
+ password1.setText(password);
+ }
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ TextView textView1=findViewById(R.id.textView);
+ username1=findViewById(R.id.textView2);
+ password1=findViewById(R.id.textView3);
+ Button open=findViewById(R.id.button2);
+ open.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View view) {
+ opendialog();
+ }
+ });
+ registerForContextMenu(textView1);
+ }
+ public void opendialog(){
+ Exampledialog exampledialog=new Exampledialog();
+ 
+exampledialog.show(getSupportFragmentManager(),"example_dialog");
+ }
+ @Override
+ public void onCreateContextMenu(ContextMenu menu, View v, 
+ContextMenu.ContextMenuInfo menuInfo) { //context menu
+ super.onCreateContextMenu(menu, v, menuInfo);
+ menu.setHeaderTitle("Choose your option");
+ //menu.add(0,v.getId(),0,"Item1");
+ MenuInflater menuInflater=getMenuInflater();
+ menuInflater.inflate(R.menu.context1_menu,menu);
+ }
+ @Override
+ public boolean onContextItemSelected(@NonNull MenuItem item) {
+ switch (item.getItemId()){
+ case R.id.Ite1:
+ Toast.makeText(this,"First item 
+Selcted",Toast.LENGTH_LONG).show();
+ return true;
+ case R.id.Ite2:
+ Toast.makeText(this,"Second item 
+Selcted",Toast.LENGTH_LONG).show();
+ return true;
+ default:
+ return super.onOptionsItemSelected(item);
+ }
+ }
+ @Override
+ public boolean onCreateOptionsMenu(Menu menu) { //Options Menu
+ MenuInflater menuInflater = getMenuInflater();
+ menuInflater.inflate(R.menu.example_menu,menu);
+ return true;
+ }
+ @Override
+ public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+ switch (item.getItemId()){
+ case R.id.first:
+ Toast.makeText(this,"First item 
+Selcted",Toast.LENGTH_LONG).show();
+ return true;
+ case R.id.second:
+ Toast.makeText(this,"Second item 
+Selcted",Toast.LENGTH_LONG).show();
+ return true;
+ default:
+ return super.onOptionsItemSelected(item);
+ }
+ }
+ public void Showpopup(View view){ ///Popup Menu
+ PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+ popupMenu.setOnMenuItemClickListener(new 
+PopupMenu.OnMenuItemClickListener() {
+ @Override
+ public boolean onMenuItemClick(MenuItem menuItem) {
+ switch(menuItem.getItemId()){
+ case R.id.Item1:
+ Toast.makeText(MainActivity.this,"Item1 
+selected",Toast.LENGTH_LONG).show();
+ return true;
+ default:
+ return false;
+ }
+ }
+ });
+ }
+}
+Exampledialog.java
+package com.example.lab5;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDialogFragment;
+public class Exampledialog extends AppCompatDialogFragment {
+ public EditText username,password;
+ private Exampledialoglistner exampledialoglistner;
+ @NonNull
+ @Override
+ public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) 
+{
+ AlertDialog.Builder builder = new 
+AlertDialog.Builder(getActivity());
+ LayoutInflater inflater=getActivity().getLayoutInflater();
+ View view = inflater.inflate(R.layout.layout_dialog,null);
+ username=view.findViewById(R.id.editTextTextPersonName);
+ password=view.findViewById(R.id.editTextTextPassword);
+ builder.setView(view)
+ .setTitle("Login")
+ .setNegativeButton("cancel", new 
+DialogInterface.OnClickListener() {
+ @Override
+public void onClick(DialogInterface 
+dialogInterface, int i) {
+ }
+ })
+ .setPositiveButton("ok", new DialogInterface.OnClickListener() 
+{
+ @Override
+ public void onClick(DialogInterface dialogInterface, int 
+i) {
+ String username1=username.getText().toString();
+ String password1=password.getText().toString();
+ exampledialoglistner.applyTexts(username1,password1);
+ }
+ });
+ return builder.create();
+ }
+ @Override
+ public void onAttach(@NonNull Context context) {
+ super.onAttach(context);
+ try {
+ exampledialoglistner=(Exampledialoglistner) context;
+ } catch (ClassCastException e) {
+ throw new ClassCastException(context.toString()+"must 
+implement ExampleDialogListner");
+ }
+ }
+ public interface Exampledialoglistner{
+ void applyTexts(String username,String password);
+ }
+}

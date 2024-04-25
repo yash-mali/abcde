@@ -1,0 +1,256 @@
+LAB4:
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <EditText
+ android:id="@+id/editTextPersonName"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="44dp"
+ android:ems="10"
+ android:hint="Name"
+ android:inputType="textPersonName"
+ android:text=""
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+ <EditText
+ android:id="@+id/editTextPassword"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:ems="10"
+ android:hint="Password"
+ android:inputType="textPassword"
+ app:layout_constraintEnd_toEndOf="@+id/editTextPersonName"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/editTextPersonName"
+ app:layout_constraintTop_toBottomOf="@+id/editTextPersonName" />
+ <EditText
+ android:id="@+id/editTextPassword2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="28dp"
+ android:ems="10"
+ android:hint="Retype Password"
+ android:inputType="textPassword"
+ app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+ app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+ <RadioGroup
+ android:id="@+id/radioGroup"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:paddingTop="20dp"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toBottomOf="@+id/editTextPassword2">
+ <RadioButton
+ android:id="@+id/BtnMale"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Male" />
+ <RadioButton
+ android:id="@+id/BtnFemale"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Female" />
+ <RadioButton
+ android:id="@+id/BtnOther"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Other" />
+ </RadioGroup>
+ <TextView
+ android:id="@+id/textView"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="264dp"
+ android:text="Gender"
+ android:textStyle="bold"
+ app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+ app:layout_constraintHorizontal_bias="0.363"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+ <Spinner
+ android:id="@+id/spinner"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="64dp"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.498"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+ <TextView
+ android:id="@+id/Subject"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="84dp"
+ android:text="Subject"
+ android:textStyle="bold"
+ app:flow_horizontalAlign="start"
+ app:layout_constraintEnd_toStartOf="@+id/spinner"
+ app:layout_constraintHorizontal_bias="0.496"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toBottomOf="@+id/textView" />
+ <Button
+ android:id="@+id/button"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="48dp"
+ android:text="Register"
+ app:layout_constraintEnd_toEndOf="@+id/spinner"
+ app:layout_constraintStart_toStartOf="@+id/spinner"
+ app:layout_constraintTop_toBottomOf="@+id/spinner" />
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="36dp"
+ android:text="Sign In"
+ app:layout_constraintEnd_toEndOf="@+id/button"
+ app:layout_constraintStart_toStartOf="@+id/button"
+ app:layout_constraintTop_toBottomOf="@+id/button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+Activity_show.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".ShowActivity">
+ <TextView
+ android:id="@+id/textView2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="48dp"
+ android:text="TextView"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.498"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+ <TextView
+ android:id="@+id/textView3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="40dp"
+ android:text="TextView"
+ app:layout_constraintEnd_toEndOf="@+id/textView2"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/textView2"
+ app:layout_constraintTop_toBottomOf="@+id/textView2" />
+ <TextView
+ android:id="@+id/textView4"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="32dp"
+ android:text="TextView"
+ app:layout_constraintEnd_toEndOf="@+id/textView3"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/textView3"
+ app:layout_constraintTop_toBottomOf="@+id/textView3" />
+ <TextView
+ android:id="@+id/textView5"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="32dp"
+ android:text="TextView"
+ app:layout_constraintEnd_toEndOf="@+id/textView4"
+ app:layout_constraintHorizontal_bias="0.0"
+ app:layout_constraintStart_toStartOf="@+id/textView4"
+ app:layout_constraintTop_toBottomOf="@+id/textView4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+Mainactivity.java
+package com.example.lab4_test2;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ EditText name =findViewById(R.id.editTextPersonName);
+ EditText pass=findViewById(R.id.editTextPassword);
+ EditText repass=findViewById(R.id.editTextPassword2);
+ RadioGroup rgend=findViewById(R.id.radioGroup);
+ Spinner subject=findViewById(R.id.spinner);
+ Button register=findViewById(R.id.button);
+ Intent intent = new Intent(MainActivity.this,ShowActivity.class);
+ rgend.setOnCheckedChangeListener(new 
+RadioGroup.OnCheckedChangeListener() {
+ @Override
+ public void onCheckedChanged(RadioGroup radioGroup, int i) {
+ int selid=radioGroup.getCheckedRadioButtonId();
+ RadioButton radioButton = findViewById(selid);
+ intent.putExtra("Gend",radioButton.getText().toString());
+ }
+ });
+ ArrayList<String> subjects=new ArrayList<>();
+ subjects.add("Engineering");
+ subjects.add("Add");
+ ArrayAdapter<String> sbada= new ArrayAdapter<>(MainActivity.this, 
+androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,subjects)
+;
+ subject.setAdapter(sbada);
+ subject.setOnItemSelectedListener(new 
+AdapterView.OnItemSelectedListener() {
+ @Override
+ public void onItemSelected(AdapterView<?> adapterView, View 
+view, int i, long l) {
+ intent.putExtra("sub",subjects.get(i));
+ }
+ @Override
+ public void onNothingSelected(AdapterView<?> adapterView) {
+ }
+ });
+ register.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View view) {
+ intent.putExtra("name",name.getText().toString());
+ startActivity(intent);
+ }
+ });
+ }
+}
+showactivity.java 
+package com.example.lab4_test2;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+public class ShowActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_show);
+ TextView name=findViewById(R.id.textView2);
+ TextView sub=findViewById(R.id.textView3);
+ TextView gend=findViewById(R.id.textView4);
+ Bundle extras=getIntent().getExtras();
+ if(extras != null)
+ {
+ name.setText(extras.getString("name"));
+ sub.setText(extras.getString("sub"));
+ gend.setText(extras.getString("Gend"));
+ }
+ }
+}
