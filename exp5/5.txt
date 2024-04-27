@@ -123,7 +123,7 @@ layout_dialog.xml---------------------------------------------------------------
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-menu-----------------------------popup_menu/context1_menu/example_menu
+Create menu folder and in that three files as follows ----------------------------- popup_menu/context1_menu/example_menu
 
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
@@ -136,7 +136,7 @@ menu-----------------------------popup_menu/context1_menu/example_menu
 
 </menu>
 
-------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
@@ -157,7 +157,7 @@ menu-----------------------------popup_menu/context1_menu/example_menu
 
 </menu>
 
---------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
@@ -179,161 +179,109 @@ menu-----------------------------popup_menu/context1_menu/example_menu
 
 </menu>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+main.java
 
-main.java------------------------------------------------------------------------------------------------------------------------
-
+package com.example.e5;
 
 import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
-
-        import android.app.Dialog;
-        import android.os.Bundle;
-
-        import android.view.ContextMenu;
-        import android.view.Menu;
-        import android.view.MenuInflater;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.PopupMenu;
-        import android.widget.TextView;
-        import android.widget.Toast;
-
-
-
-
-public class MainActivity extends AppCompatActivity  implements Example_Dialog.ExampleDialogListener{
-    Button btn,dialogbtn;
-    Dialog mydialog;
-    TextView textView1,textView2;
-
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity implements Exampledialog.Exampledialoglistner {
+    TextView username1,password1;
+    @Override
+    public void applyTexts(String username, String password) {
+        username1.setText(username);
+        password1.setText(password);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        setSupportActionBar(findViewById(R.id.main_toolbar));
-        TextView textView = findViewById(R.id.textview);
-        textView1 = findViewById(R.id.textView4);
-        textView2 = findViewById(R.id.textView5);
-        mydialog = new Dialog(this);
-        btn  =findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
+        TextView textView1=findViewById(R.id.textView);
+        username1=findViewById(R.id.textView2);
+        password1=findViewById(R.id.textView3);
+        Button open=findViewById(R.id.button2);
+        open.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(MainActivity.this, btn);
-
-                // Inflating popup menu from popup_menu.xml file
-                popupMenu.getMenuInflater().inflate(R.menu.popupmenu, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        // Toast message on menu item clicked
-                        Toast.makeText(MainActivity.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                });
-                // Showing the popup menu
-                popupMenu.show();
+            public void onClick(View view) {
+                opendialog();
             }
         });
-
-        dialogbtn = findViewById(R.id.button2);
-        dialogbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Example_Dialog exampleDialog= new Example_Dialog();
-                exampleDialog.show(getSupportFragmentManager(),"example dialog");
-            }
-        });
-        registerForContextMenu(textView);
-
-
-
-
+        registerForContextMenu(textView1);
     }
+    public void opendialog(){
+        Exampledialog exampledialog=new Exampledialog();
 
+        exampledialog.show(getSupportFragmentManager(),"example_dialog");
+    }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.optionmenu,menu);
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) { //context menu
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Choose your option");
+        //menu.add(0,v.getId(),0,"Item1");
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.context1_menu,menu);
+    }
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.Ite1) {
+            Toast.makeText(this, "First item Selcted", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (itemId == R.id.Ite2) {
+            Toast.makeText(this, "Second item Selcted", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { //Options Menu
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.example_menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.optionitem1)
-        {
-            Toast.makeText(this, "View Profile selected", Toast.LENGTH_SHORT).show();
+        int itemId = item.getItemId();
+        if (itemId == R.id.first) {
+            Toast.makeText(this, "First item Selcted", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (itemId == R.id.second) {
+            Toast.makeText(this, "Second item Selcted", Toast.LENGTH_LONG).show();
             return true;
         }
-        else if(id==R.id.optionitem2) {
-            Toast.makeText(this, "Chat Theme selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else if(id==R.id.optionitem4) {
-            Toast.makeText(this, "New group selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else if(id==R.id.optionitem3) {
-            Toast.makeText(this, "Search selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else if(id==R.id.optionitem5) {
-            Toast.makeText(this, "Linked devices selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else if(id==R.id.optionitem6) {
-            Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else {
-            return super.onOptionsItemSelected(item);
-        }
+        return super.onOptionsItemSelected(item);
     }
-
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-
-        inflater.inflate(R.menu.contextmenu,menu);
+    public void Showpopup(View view){ ///Popup Menu
+        PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.Item1) {
+                    Toast.makeText(MainActivity.this, "Item1 selected", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-        if(id == R.id.item1)
-        {
-            Toast.makeText(this, "Share selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else if(id==R.id.item2) {
-            Toast.makeText(this, "Delete selected", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else {
-
-            return super.onContextItemSelected(item);
-        }
-    }
-
-    @Override
-    public void applyTexts(String username, String password) {
-        textView1.setText(username);
-        textView2.setText(password);
-    }
 }
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Example_dialog.java-----------------------------------------------------------------------------------------------------------------------------------
-
+Example_dialog.java
 
 import android.app.AlertDialog;
         import android.app.Dialog;
